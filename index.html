@@ -5,13 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>VueJS pagination</title>
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
 
         <div id="app">
-            <div v-for="photo in photos">
-                <img :src="photo.urls.small" alt="">
-            </div>
+            <section class="grid">
+                <div class="grid__item card" v-for="photo in photos">
+                    <div class="card__body">
+                        <img :src="photo.urls.small" alt="">
+                    </div>
+                    <div class="card__footer">
+                        <img :src="photo.user.profile_image.small" alt="" class="media__obj">
+                        <div class="media__body">
+                            <a :href="photo.user.portfolio_url" target="_blank">{{ photo.user.name }}</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
 
         <script src="https://unpkg.com/vue/dist/vue.js"></script>
