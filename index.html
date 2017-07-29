@@ -12,16 +12,25 @@
         <template id="pagination-template">
             <div class="pagination">
                 <div class="pagination__left">
-                    <a href="#" @click="changePage(prevPage)">Предыдущая</a>
+                    <a href="#" v-if="hasPrev()" @click="changePage(prevPage)">Предыдущая</a>
+                </div>
+                <div class="pagination__mid">
+                    <span>{{ current }} из {{ totalPages }}</span>
                 </div>
                 <div class="pagination__right">
-                    <a href="#" @click="changePage(nextPage)">Следующая</a>
+                    <a href="#" v-if="hasNext()" @click="changePage(nextPage)">Следующая</a>
                 </div>
             </div>
         </template>
 
         <div id="app">
-            <pagination :current="currentPage" @page-changed="fetchPhotos"></pagination>
+            <pagination
+                    :current="currentPage"
+                    :total="totalPhotos"
+                    :perPage="perPage"
+                    @page-changed="fetchPhotos"
+            >
+            </pagination>
             <section class="grid">
                 <div class="grid__item card" v-for="photo in photos">
                     <div class="card__body">
