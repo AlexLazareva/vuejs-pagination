@@ -1,1 +1,3 @@
-
+new Vue({
+    el: '#app'
+})
