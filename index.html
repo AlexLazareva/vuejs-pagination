@@ -15,7 +15,11 @@
                     <a href="#" v-if="hasPrev()" @click="changePage(prevPage)">Предыдущая</a>
                 </div>
                 <div class="pagination__mid">
-                    <span>{{ current }} из {{ totalPages }}</span>
+                    <ul>
+                        <li v-for="page in pages">
+                            <a href="#" @click="changePage(page)">{{ page }}</a>
+                        </li>
+                    </ul>
                 </div>
                 <div class="pagination__right">
                     <a href="#" v-if="hasNext()" @click="changePage(nextPage)">Следующая</a>

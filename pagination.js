@@ -12,16 +12,39 @@ Vue.component('pagination', {
         perPage: {
             type: Number,
             default: 9
+        },
+        pageRange: {
+            type: Number,
+            default: 2
         }
     },
     computed: {
-        totalPages: function () {
-          return Math.ceil(this.total/this.perPage)
+        pages: function () {
+          var pages = []
+
+           for(var i = this.rangeStart; i <= this.rangeEnd; i++) {
+                pages.push(i)
+           }
+
+           return pages
         },
-        nextPage: function() {
+        rangeStart: function () {
+          var start = this.current - this.pageRange
+
+            return (start > 0) ? start : 1
+        },
+        rangeEnd: function () {
+          var end = this.current + this.pageRange
+
+            return (end < this.totalPages) ? end : this.totalPages
+        },
+        totalPages: function () {
+            return Math.ceil(this.total/this.perPage)
+        },
+        nextPage: function () {
             return this.current + 1
         },
-        prevPage: function() {
+        prevPage: function () {
             return this.current - 1
         }
     },
