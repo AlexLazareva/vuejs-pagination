@@ -126,7 +126,7 @@ body {
 .pagination a {
     font-size: 18px;
     padding: 0 20px;
-    min-width: 160px;
+    min-width: 16px;
     background-color: transparent;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -135,7 +135,23 @@ body {
     transition: all .2s ease-in-out;
 }
 
-.pagination a:hover {
+.pagination a:hover, .pagination a.current {
     border-color: #ea4c89;
     color: #ea4c89;
+}
+
+.pagination__mid {
+    display: flex;
+    justify-content: center;
+    width: 60%;
+}
+
+.pagination__mid ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pagination__mid li {
+    display: inline-block;
 }
