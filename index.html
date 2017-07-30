@@ -17,7 +17,9 @@
                 <div class="pagination__mid">
                     <ul>
                         <li v-for="page in pages">
-                            <a href="#" @click="changePage(page)">{{ page }}</a>
+                            <a href="#" @click="changePage(page)" :class="{ current: current == page }">
+                                {{ page }}
+                            </a>
                         </li>
                     </ul>
                 </div>
