@@ -49,6 +49,12 @@ Vue.component('pagination', {
         }
     },
     methods: {
+        hasFirst: function () {
+            return this.rangeStart !== 1
+        },
+        hasLast: function () {
+            return this.rangeEnd < this.totalPages
+        },
         hasPrev: function () {
             return this.current > 1
         },
